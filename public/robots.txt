@@ -1,0 +1,6 @@
+# PRIME PLUS BUILDERS AND DEVELOPERS PVT LTD
+User-agent: *
+Allow: /
+
+# Replace with production domain when available
+Sitemap: https://www.primeplusbuilders.example/sitemap.xml
