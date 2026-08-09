@@ -1,14 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
 import { PORTFOLIO_CONTENT } from "@/lib/constants";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { usePrefersReducedMotion } from "@/hooks/useMediaQuery";
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+import { useIsDesktop, usePrefersReducedMotion } from "@/hooks/useMediaQuery";
+import { gsap, useGSAP, MOTION } from "@/lib/motion";
 
 function CategoryIcon({ type }: { type: "tower" | "interior" | "bridge" }) {
   if (type === "tower") {
@@ -44,6 +40,7 @@ export function Portfolio() {
   const sectionRef = useRef<HTMLElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const isDesktop = useIsDesktop();
 
   useGSAP(
     () => {
@@ -52,16 +49,23 @@ export function Portfolio() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: visualRef.current,
-          start: "top 70%",
-          end: "bottom 40%",
-          scrub: 1,
+          start: "top 75%",
+          end: isDesktop ? "bottom 40%" : undefined,
+          scrub: isDesktop ? 1 : false,
+          toggleActions: isDesktop ? undefined : "play none none none",
+          once: !isDesktop,
         },
       });
 
       tl.fromTo(
         "[data-cs-line]",
         { strokeDashoffset: 320, opacity: 0.2 },
-        { strokeDashoffset: 0, opacity: 1, stagger: 0.05, duration: 1 },
+        {
+          strokeDashoffset: 0,
+          opacity: 1,
+          stagger: 0.04,
+          duration: isDesktop ? 1 : MOTION.revealDuration,
+        },
       )
         .fromTo(
           "[data-cs-rise]",
@@ -104,7 +108,7 @@ export function Portfolio() {
           { x: 80, opacity: 0.8, duration: 1.2 },
         );
     },
-    { scope: sectionRef, dependencies: [prefersReducedMotion] },
+    { scope: sectionRef, dependencies: [prefersReducedMotion, isDesktop], revertOnUpdate: true },
   );
 
   return (

@@ -189,10 +189,114 @@
   .hero-scrim-mobile {
     background: linear-gradient(
       180deg,
-      rgba(2, 13, 26, 0.55) 0%,
-      rgba(2, 13, 26, 0.82) 42%,
-      rgba(2, 13, 26, 0.96) 100%
+      rgba(2, 13, 26, 0.4) 0%,
+      rgba(2, 13, 26, 0.72) 38%,
+      rgba(2, 13, 26, 0.94) 100%
     );
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bridgeDraw {
+  from {
+    transform: scaleX(0) rotate(-4deg);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1) rotate(-4deg);
+    opacity: 1;
+  }
+}
+
+@keyframes spireGlow {
+  0%,
+  100% {
+    opacity: 0.55;
+    box-shadow: 0 0 0 transparent;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(198, 146, 46, 0.55);
+  }
+}
+
+@keyframes windowFlicker {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  40% {
+    opacity: 0.55;
+  }
+  70% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes gridDrift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 56px 56px;
+  }
+}
+
+@keyframes floatMark {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes buildLoop {
+  0%,
+  100% {
+    transform: translateY(6px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes floorPop {
+  0%,
+  15% {
+    opacity: 0.15;
+    transform: scaleY(0.2);
+  }
+  30%,
+  70% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  85%,
+  100% {
+    opacity: 0.35;
+    transform: scaleY(0.85);
   }
 }
 

@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useIsMobile, usePrefersReducedMotion } from "@/hooks/useMediaQuery";
+import { useIsDesktop, usePrefersReducedMotion } from "@/hooks/useMediaQuery";
 
 /**
  * Subtle branded cursor label for desktop interactions.
  */
 export function CustomCursor() {
-  const isMobile = useIsMobile();
+  const isDesktop = useIsDesktop();
   const prefersReducedMotion = usePrefersReducedMotion();
   const [label, setLabel] = useState<string | null>(null);
   const [visible, setVisible] = useState(false);
@@ -19,7 +19,7 @@ export function CustomCursor() {
   const springY = useSpring(y, { stiffness: 400, damping: 35 });
 
   useEffect(() => {
-    if (isMobile || prefersReducedMotion) return;
+    if (!isDesktop || prefersReducedMotion) return;
 
     const onMove = (e: MouseEvent) => {
       x.set(e.clientX);
@@ -45,9 +45,9 @@ export function CustomCursor() {
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
     };
-  }, [isMobile, prefersReducedMotion, x, y]);
+  }, [isDesktop, prefersReducedMotion, x, y]);
 
-  if (isMobile || prefersReducedMotion) return null;
+  if (!isDesktop || prefersReducedMotion) return null;
 
   return (
     <motion.div
