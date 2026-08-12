@@ -4,7 +4,11 @@ export const COMPANY = {
   displayName: "Prime Plus Builders & Developers",
   tagline: "Construction • Interior • Infrastructure",
   email: "info@primebuilderindia.com",
-  address: "Kerala, India",
+  phone: "0091 9699882255",
+  phoneTel: "+919699882255",
+  whatsappUrl: "https://wa.me/919699882255",
+  address:
+    "1st Floor, Palakkulam Building, Koyilandy Taluk, Kozhikode, Kerala, Pin : 673307",
   websiteUrl: "https://www.primeplusbuilders.example",
 } as const;
 

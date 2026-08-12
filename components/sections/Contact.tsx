@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { COMPANY, CONTACT_CONTENT } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 import { SectionReveal } from "@/components/ui/SectionReveal";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 const fieldClass =
   "w-full rounded-[2px] border border-navy-800/15 bg-warm-white px-4 py-3.5 text-sm text-navy-900 outline-none transition-colors placeholder:text-subtle-grey focus:border-gold-500";
@@ -45,6 +46,27 @@ export function Contact() {
 
               <dl data-reveal className="mt-10 space-y-5 text-sm">
                 <div>
+                  <dt className="eyebrow text-navy-800/50">Mobile</dt>
+                  <dd className="mt-2 flex flex-wrap items-center gap-3">
+                    <a
+                      href={`tel:${COMPANY.phoneTel}`}
+                      className="text-navy-900 transition-colors hover:text-gold-600"
+                    >
+                      {COMPANY.phone}
+                    </a>
+                    <a
+                      href={COMPANY.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-[2px] border border-[#25D366]/40 bg-[#25D366]/10 px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#128C7E] transition-colors hover:bg-[#25D366]/20"
+                      aria-label={`WhatsApp ${COMPANY.phone}`}
+                    >
+                      <WhatsAppIcon className="h-3.5 w-3.5" />
+                      WhatsApp
+                    </a>
+                  </dd>
+                </div>
+                <div>
                   <dt className="eyebrow text-navy-800/50">Email</dt>
                   <dd className="mt-2">
                     <a
@@ -57,7 +79,9 @@ export function Contact() {
                 </div>
                 <div>
                   <dt className="eyebrow text-navy-800/50">Address</dt>
-                  <dd className="mt-2 text-navy-900">{COMPANY.address}</dd>
+                  <dd className="mt-2 max-w-sm text-navy-900 leading-relaxed">
+                    {COMPANY.address}
+                  </dd>
                 </div>
               </dl>
             </div>

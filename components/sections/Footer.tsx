@@ -1,6 +1,7 @@
 import { COMPANY, FOOTER_LINKS } from "@/lib/constants";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export function Footer() {
   return (
@@ -39,14 +40,31 @@ export function Footer() {
             <Button href="#contact" variant="secondary">
               Start a Conversation
             </Button>
-            <div className="text-left text-sm text-warm-white/55 lg:text-right">
+            <div className="max-w-xs text-left text-sm text-warm-white/55 lg:text-right">
+              <div className="flex flex-wrap items-center gap-2 lg:justify-end">
+                <a
+                  href={`tel:${COMPANY.phoneTel}`}
+                  className="transition-colors hover:text-gold-400"
+                >
+                  {COMPANY.phone}
+                </a>
+                <a
+                  href={COMPANY.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-[2px] border border-[#25D366]/35 p-1.5 text-[#25D366] transition-colors hover:bg-[#25D366]/15"
+                  aria-label={`Chat on WhatsApp: ${COMPANY.phone}`}
+                >
+                  <WhatsAppIcon className="h-4 w-4" />
+                </a>
+              </div>
               <a
                 href={`mailto:${COMPANY.email}`}
-                className="transition-colors hover:text-gold-400"
+                className="mt-2 block transition-colors hover:text-gold-400"
               >
                 {COMPANY.email}
               </a>
-              <p className="mt-1">{COMPANY.address}</p>
+              <p className="mt-2 leading-relaxed">{COMPANY.address}</p>
             </div>
           </div>
         </div>
