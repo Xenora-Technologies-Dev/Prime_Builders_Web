@@ -3,6 +3,7 @@ import { Manrope, Cormorant_Garamond } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { Navigation } from "@/components/ui/Navigation";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { Footer } from "@/components/sections/Footer";
 import "./globals.css";
 
@@ -85,6 +86,7 @@ export default function RootLayout({
           <Navigation />
           <main id="main-content">{children}</main>
           <Footer />
+          <FloatingWhatsApp />
         </SmoothScrollProvider>
       </body>
     </html>
