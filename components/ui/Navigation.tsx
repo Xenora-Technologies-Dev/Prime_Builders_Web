@@ -1,15 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 
+function hashFromHref(href: string) {
+  const index = href.indexOf("#");
+  return index >= 0 ? href.slice(index + 1) : "";
+}
+
 export function Navigation() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
+  const showLogo = pathname !== "/" || scrolled || open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -19,7 +27,14 @@ export function Navigation() {
   }, []);
 
   useEffect(() => {
-    const ids = NAV_LINKS.map((l) => l.href.replace("#", ""));
+    if (pathname === "/gallery") {
+      setActive("/gallery");
+      return;
+    }
+
+    const ids = NAV_LINKS.map((link) => hashFromHref(link.href)).filter(
+      Boolean,
+    );
     const elements = ids
       .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[];
@@ -32,7 +47,7 @@ export function Navigation() {
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
         if (visible[0]?.target?.id) {
-          setActive(`#${visible[0].target.id}`);
+          setActive(`/#${visible[0].target.id}`);
         }
       },
       { rootMargin: "-35% 0px -45% 0px", threshold: [0.1, 0.35, 0.6] },
@@ -40,7 +55,7 @@ export function Navigation() {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -75,7 +90,7 @@ export function Navigation() {
           <div
             className={[
               "flex h-full min-w-0 items-center py-2.5 transition-all duration-500",
-              scrolled || open
+              showLogo
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none -translate-y-1 opacity-0",
             ].join(" ")}
@@ -117,7 +132,7 @@ export function Navigation() {
           <div className="flex items-center justify-end gap-2">
             <div className="hidden lg:block">
               <Button
-                href="#contact"
+                href="/#contact"
                 variant="secondary"
                 className="whitespace-nowrap px-5 py-2.5"
                 dataCursor="BUILD"
@@ -191,7 +206,7 @@ export function Navigation() {
                 className="pt-8"
               >
                 <Button
-                  href="#contact"
+                  href="/#contact"
                   variant="primary"
                   onClick={() => setOpen(false)}
                 >

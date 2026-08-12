@@ -13,19 +13,21 @@ export const COMPANY = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Approach", href: "#approach" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Approach", href: "/#approach" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 export const FOOTER_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Approach", href: "#approach" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Approach", href: "/#approach" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
 export const HERO_CONTENT = {
@@ -47,6 +49,20 @@ export const HERO_CONTENT = {
 export const INTRO_CONTENT = {
   heading: ["Built with Purpose.", "Designed to Last."],
   body: "Prime Plus Builders and Developers Pvt Ltd brings together construction, interior and infrastructure under one vision — creating spaces and structures that combine functionality, quality and thoughtful design.",
+  points: [
+    {
+      title: "One team. Three disciplines.",
+      text: "Construction, interior and infrastructure planned together so the finished space works as a whole.",
+    },
+    {
+      title: "Clarity from first conversation.",
+      text: "We listen to the brief, map the practical path, and keep communication clear through every stage.",
+    },
+    {
+      title: "Built for Kerala’s context.",
+      text: "From Koyilandy and Kozhikode outward — structures shaped around climate, site and lasting use.",
+    },
+  ],
 } as const;
 
 export const SERVICES = [
@@ -99,29 +115,90 @@ export const ABOUT_CONTENT = {
 } as const;
 
 export const PORTFOLIO_CONTENT = {
-  label: "Projects • Spaces • Infrastructure",
-  heading: ["What We're", "Building Next."],
+  label: "Current Projects",
+  heading: ["What We're", "Building Now."],
   supporting:
-    "Our portfolio is taking shape. Explore this space soon as we unveil the projects, spaces and infrastructure that define the Prime Plus vision.",
-  comingSoonLabel: "Project Portfolio",
-  categories: [
-    {
-      id: "construction",
-      title: "Construction",
-      visual: "tower" as const,
-    },
-    {
-      id: "interior",
-      title: "Interior",
-      visual: "interior" as const,
-    },
-    {
-      id: "infrastructure",
-      title: "Infrastructure",
-      visual: "bridge" as const,
-    },
-  ],
+    "Active work across education, residential and commercial spaces — each project moving from structure to finished environment.",
 } as const;
+
+export const CURRENT_PROJECTS = [
+  {
+    id: "school",
+    title: "School",
+    status: "In progress",
+    category: "Education",
+    icon: "school" as const,
+    description:
+      "An educational facility taking shape with a focus on durable structure, clear planning and spaces built for learning.",
+  },
+  {
+    id: "house",
+    title: "House",
+    status: "In progress",
+    category: "Residential",
+    icon: "house" as const,
+    description:
+      "A residential home advancing through construction and finishing — planned for comfort, function and lasting quality.",
+  },
+  {
+    id: "supermarket",
+    title: "Super Market",
+    status: "In progress",
+    category: "Commercial",
+    icon: "supermarket" as const,
+    description:
+      "A commercial supermarket project in development, designed to support daily use, circulation and long-term performance.",
+  },
+] as const;
+
+export type GalleryMediaType = "image" | "video";
+
+export const GALLERY_ITEMS = [
+  {
+    id: "gallery-house-finishing",
+    type: "image" as GalleryMediaType,
+    src: "/images/gallery/house-finishing.png",
+    poster: "/images/gallery/house-finishing.png",
+    title: "Residential House",
+    category: "House",
+    caption: "Exterior taking form — plastered structure and joinery in place.",
+    alt: "Two-storey residential house under construction with plastered walls",
+  },
+  {
+    id: "gallery-house-progress",
+    type: "image" as GalleryMediaType,
+    src: "/images/gallery/house-progress.png",
+    poster: "/images/gallery/house-progress.png",
+    title: "Structure Rising",
+    category: "House",
+    caption: "Frame, masonry and site work progressing beside the roadside plot.",
+    alt: "Multi-storey house under construction with laterite walls and scaffolding",
+  },
+  {
+    id: "gallery-house-structure",
+    type: "image" as GalleryMediaType,
+    src: "/images/gallery/house-structure.png",
+    poster: "/images/gallery/house-structure.png",
+    title: "On-Site Construction",
+    category: "Construction",
+    caption: "Active site with structural work, scaffolding and weather protection.",
+    alt: "Building under construction with laterite brickwork and tarps",
+  },
+  {
+    id: "gallery-site-video",
+    type: "video" as GalleryMediaType,
+    src: "/videos/site-progress.mp4",
+    poster: "/images/gallery/house-progress.png",
+    title: "Site Progress",
+    category: "Works",
+    caption: "A closer look at work underway on site.",
+    alt: "Video of construction work in progress",
+  },
+] as const;
+
+export const GALLERY_HIGHLIGHTS = GALLERY_ITEMS.filter(
+  (item) => item.type === "image",
+).slice(0, 3);
 
 export const APPROACH_STEPS = [
   {
@@ -183,11 +260,11 @@ export const CTA_CONTENT = {
     "Let's discuss your next construction, interior or infrastructure project.",
   primaryCta: {
     label: "Start a Conversation",
-    href: "#contact",
+    href: "/#contact",
   },
   secondaryCta: {
     label: "Explore Our Services",
-    href: "#services",
+    href: "/#services",
   },
 } as const;
 
@@ -196,4 +273,18 @@ export const CONTACT_CONTENT = {
   message:
     "Share a few details about your project and we will respond with the next steps.",
   projectTypes: ["Construction", "Interior", "Infrastructure", "Other"] as const,
+  nextSteps: [
+    {
+      title: "Share the brief",
+      text: "Tell us the type of work, the site, and what you need the space to do.",
+    },
+    {
+      title: "We review the scope",
+      text: "We look at the practical path — structure, interior or infrastructure — and what comes first.",
+    },
+    {
+      title: "Talk through next steps",
+      text: "We reply with a clear conversation on how to move the project forward.",
+    },
+  ],
 } as const;

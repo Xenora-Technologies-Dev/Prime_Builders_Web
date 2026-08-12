@@ -4,6 +4,7 @@ import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
 import { BlueprintTransition } from "@/components/sections/BlueprintTransition";
 import { Portfolio } from "@/components/sections/Portfolio";
+import { GalleryHighlight } from "@/components/sections/GalleryHighlight";
 import { Approach } from "@/components/sections/Approach";
 import { WhyPrimePlus } from "@/components/sections/WhyPrimePlus";
 import { CallToAction } from "@/components/sections/CallToAction";
@@ -18,6 +19,7 @@ export default function HomePage() {
       <Services />
       <BlueprintTransition />
       <Portfolio />
+      <GalleryHighlight />
       <Approach />
       <WhyPrimePlus />
       <CallToAction />

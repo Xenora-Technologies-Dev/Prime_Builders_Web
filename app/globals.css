@@ -46,6 +46,11 @@
 
   html {
     scroll-behavior: auto;
+    scroll-padding-top: calc(var(--spacing-nav) + 0.75rem);
+  }
+
+  section[id] {
+    scroll-margin-top: calc(var(--spacing-nav) + 0.75rem);
   }
 
   html.lenis,

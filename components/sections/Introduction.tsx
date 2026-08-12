@@ -32,6 +32,24 @@ export function Introduction() {
               {INTRO_CONTENT.body}
             </p>
           </div>
+
+          <ul className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-6">
+            {INTRO_CONTENT.points.map((point) => (
+              <li
+                key={point.title}
+                data-reveal
+                className="border border-navy-800/10 bg-warm-white/70 p-5 text-left sm:p-6"
+              >
+                <div className="mb-4 h-px w-8 bg-gold-500" aria-hidden />
+                <h3 className="font-display text-2xl text-navy-900">
+                  {point.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  {point.text}
+                </p>
+              </li>
+            ))}
+          </ul>
         </SectionReveal>
       </div>
     </section>

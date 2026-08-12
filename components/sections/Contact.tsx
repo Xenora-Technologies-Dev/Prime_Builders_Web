@@ -44,6 +44,22 @@ export function Contact() {
                 {CONTACT_CONTENT.message}
               </p>
 
+              <ol
+                data-reveal
+                className="mt-8 space-y-4 border-l border-gold-500/40 pl-4"
+              >
+                {CONTACT_CONTENT.nextSteps.map((step, index) => (
+                  <li key={step.title}>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-600">
+                      {String(index + 1).padStart(2, "0")} · {step.title}
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">
+                      {step.text}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+
               <dl data-reveal className="mt-10 space-y-5 text-sm">
                 <div>
                   <dt className="eyebrow text-navy-800/50">Mobile</dt>

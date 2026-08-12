@@ -37,7 +37,7 @@ export function Footer() {
           </nav>
 
           <div className="flex flex-col items-start gap-5 lg:items-end">
-            <Button href="#contact" variant="secondary">
+            <Button href="/#contact" variant="secondary">
               Start a Conversation
             </Button>
             <div className="max-w-xs text-left text-sm text-warm-white/55 lg:text-right">
